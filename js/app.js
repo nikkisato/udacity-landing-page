@@ -25,7 +25,7 @@
 const sectionsList = ["Section 1", "Section 2", "Section 3", "Section 4"];
 const sections = document.querySelectorAll("section");
 const navLinks = document.getElementById("navbar__list");
-
+const navList = [];
 /**
  * End Global Variables
  * Start Helper Functions
@@ -65,6 +65,24 @@ function makeActive() {
 }
 
 // Scroll to anchor ID using scrollTO event
+// Scroll to section on link click
+
+// double checks that the DOM nav has loaded and then will check if not null
+document.addEventListener("DOMContentLoaded", function () {
+  for (let i = 0; i < 4; i++) {
+    const sectionLink = document.querySelector(`a[data-nav="Section ${i + 1}"]`);
+
+    if (sectionLink && sectionLink != null) {
+      sectionLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        const sectionDOM = document.getElementById(`section${i + 1}`);
+        sectionDOM.scrollIntoView({
+          scroll: "smooth",
+        });
+      });
+    }
+  }
+});
 
 /**
  * End Main Functions
@@ -78,9 +96,10 @@ sectionsList.forEach((item, i) => {
   //creating an a tag element and assigning innerText, Id and classnames
   const el = document.createElement("a");
   el.innerText = item;
-  el.setAttribute("id", `#section${i + 1}`);
+  el.setAttribute("id", `section${i + 1}Link`);
   el.classList.add("menu__link", `section${i + 1}`);
   el.dataset.nav = `Section ${i + 1}`;
+  // el.setAttribute("href", `#section${i + 1}`);
 
   // creating an li element and appending to the a tag element
   const li = document.createElement("li");
@@ -88,9 +107,9 @@ sectionsList.forEach((item, i) => {
 
   // Appending the li element to the navbar
   navLinks.appendChild(li);
+  // pushing the li elements in to a array
+  navList.push(li);
 });
-
-// Scroll to section on link click
 
 // Set sections as active
 document.addEventListener("scroll", function () {
