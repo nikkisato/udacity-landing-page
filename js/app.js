@@ -51,8 +51,11 @@ function makeActive() {
       // For loop to through the Nodelist
       for (let i = 0; i < anchor.length; i++) {
         let item = anchor[i];
+        console.log(item);
 
-        if (section.id == item.id) {
+        console.log(section.dataset.nav);
+
+        if (section.dataset.nav === item.dataset.nav) {
           item.classList.add("active");
         } else {
           item.classList.remove("active");
@@ -77,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         const sectionDOM = document.getElementById(`section${i + 1}`);
         sectionDOM.scrollIntoView({
-          scroll: "smooth",
+          behavior: "smooth",
         });
       });
     }
