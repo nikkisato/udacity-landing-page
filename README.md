@@ -1,6 +1,6 @@
-# Landing Page Project
+# Udacity Landing Page Project
 
-##Feature
+## Feature
 
 - In this project, I used JavaScript to navigate through the DOM
 - dynamically build the navigation menu, and used javascript to implement which sections to go to
