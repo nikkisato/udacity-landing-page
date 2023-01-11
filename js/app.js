@@ -51,9 +51,6 @@ function makeActive() {
       // For loop to through the Nodelist
       for (let i = 0; i < anchor.length; i++) {
         let item = anchor[i];
-        console.log(item);
-
-        console.log(section.dataset.nav);
 
         if (section.dataset.nav === item.dataset.nav) {
           item.classList.add("active");
